@@ -1,12 +1,17 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.modelo.Estudiante;
-import com.example.demo.service.IEstudianteService;
+import com.example.demo.modelo.Cliente;
+import com.example.demo.modelo.Vehiculo;
+import com.example.demo.service.IClienteService;
+import com.example.demo.service.IRentaService;
+import com.example.demo.service.IVehiculoService;
 
 @SpringBootApplication
 public class ProyectoPaU3ScApplication implements CommandLineRunner {
@@ -16,52 +21,37 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 	}
 
 	@Autowired
-	private IEstudianteService estudianteService;
+	private IVehiculoService vehiculoService;
+
+	@Autowired
+	private IClienteService clienteService;
+
+	@Autowired
+	private IRentaService rentaService;
 
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		// Insertar estudiantes
+		Cliente cliente = new Cliente();
 
-		Estudiante estudiante = new Estudiante();
-		estudiante.setApellido("Castillo");
-		estudiante.setCedula("1717844466");
-		estudiante.setCiudad("Quito");
-		estudiante.setGenero("M");
-		estudiante.setNombre("Serghy");
+		cliente.setApellido("Castillo");
+		cliente.setCedula("1234567890");
+		cliente.setNombre("Serghy");
+		cliente.setTarjeta("2233445566");
 
-		Estudiante estudiante2 = new Estudiante();
-		estudiante2.setApellido("Conde");
-		estudiante2.setCedula("1717560930");
-		estudiante2.setCiudad("Quevedo");
-		estudiante2.setGenero("F");
-		estudiante2.setNombre("Dayana");
+		this.clienteService.crear(cliente);
 
-		Estudiante estudiante3 = new Estudiante();
-		estudiante3.setApellido("Madrid");
-		estudiante3.setCedula("1717569838");
-		estudiante3.setCiudad("Guayaquil");
-		estudiante3.setGenero("M");
-		estudiante3.setNombre("Omar");
+		Vehiculo vehiculo = new Vehiculo();
 
-		Estudiante estudiante4 = new Estudiante();
-		estudiante4.setApellido("Chuquimarca");
-		estudiante4.setCedula("1734567898");
-		estudiante4.setCiudad("Otavalo");
-		estudiante4.setGenero("M");
-		estudiante4.setNombre("Miguel");
+		vehiculo.setMarca("Toyota");
+		vehiculo.setModelo("Picanto");
+		vehiculo.setPlaca("PDC9939");
+		vehiculo.setPrecio(new BigDecimal(30));
 
-		this.estudianteService.crear(estudiante);
-		this.estudianteService.crear(estudiante2);
-		this.estudianteService.crear(estudiante3);
-		this.estudianteService.crear(estudiante4);
+		this.vehiculoService.crear(vehiculo);
 
-		System.out.println("Estudiante por Nombre" + this.estudianteService.buscarNombre("Serghy"));
-		System.out.println("Estudiante por Apellido" + this.estudianteService.buscarApellido("Castillo"));
-		System.out.println("Estudiante por Ciudad" + this.estudianteService.buscarCiudad("Quevedo"));
-		System.out.println("Estudiante por Cedula" + this.estudianteService.buscarCedula("1717569838"));
-		System.out.println("Estudiante por Genero" + this.estudianteService.buscarGenero("F"));
+		this.rentaService.realizar("1234567890", "PDC9939");
 
 	}
 

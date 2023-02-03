@@ -20,7 +20,31 @@ public class EstudianteServiceImpl implements IEstudianteService{
 	@Override
 	public Estudiante buscarApellido(String apellido) {
 		// TODO Auto-generated method stub
-		return this.buscarApellido(apellido);
+		return this.estudianteRepo.buscarApellidoQuery(apellido);
+	}
+
+	@Override
+	public Estudiante buscarGenero(String genero) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarGeneroQuery(genero);
+	}
+
+	@Override
+	public Estudiante buscarCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarCedulaQuery(cedula);
+	}
+
+	@Override
+	public Estudiante buscarCiudad(String ciudad) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarCiudadQuery(ciudad);
+	}
+
+	@Override
+	public void crear(Estudiante estudiante) {
+		// TODO Auto-generated method stub
+		this.estudianteRepo.insertar(estudiante);
 	}
 	
 	

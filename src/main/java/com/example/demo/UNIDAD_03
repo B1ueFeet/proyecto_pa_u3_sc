@@ -8,7 +8,7 @@ RELACIONES ENTRE TABLAS
 	└►	1 - varios		:	relaciones de un objeto a varias (estudiante - matriculas)
 	└►	varios - varios	: 	relaciones de muchos a mkuchos (tabla de rompimiento)
 
-	cascade se usa para las operaciones en secuencia de entidades
+	CASCADE se usa para las operaciones en secuencia de entidades
 	
 	REMOVE			remover en cascada
 	MERGE			actualizar en cascada
@@ -27,8 +27,8 @@ EXISTEN 3 FORMAS DE EJECUTAR QUERYS COMPLEJOS EN JAKARTA
 	└►QUERY					Tiene su propio lenguaje JPQL (Java Persistance Query Language)(parecido al SQL)
 							Retorna Genericos
 							lenguaje de consultas orientado a objetos cualquiera  de Jakarta Persistence
-							└►TypeQuery			a objetos Especificos
-							└►NamedQuery		Darle un alias a un Query
+							└►TypedQuery		orientado a objetos Especificos 
+							└►NamedQuery		Darle un alias a un Query para reusarlo
 							Beneficios:			-► Mantenimiento 
 												└► Reutilizacion
 												└► Orden
@@ -39,7 +39,6 @@ EXISTEN 3 FORMAS DE EJECUTAR QUERYS COMPLEJOS EN JAKARTA
 							Beneficios:			-► Velocidad 
 												└► Rendimiento
 												
-										
 	
 	└►CRITERIA API QUERY	API: conjunto de librerias/metodos 
 							que permiten construir un query de manera programatica 
@@ -47,5 +46,4 @@ EXISTEN 3 FORMAS DE EJECUTAR QUERYS COMPLEJOS EN JAKARTA
 																		└►Metodos 
 							Beneficios:			-► Manera Dinamica 
 												
-
-	
+NOTA: Hibernate INDEPENDIZA el codigo de la base de datos 

@@ -23,7 +23,7 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 
 		// Insertar estudiantes
-
+		/*
 		Estudiante estudiante = new Estudiante();
 		estudiante.setApellido("Castillo");
 		estudiante.setCedula("1717844466");
@@ -55,13 +55,22 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 		this.estudianteService.crear(estudiante);
 		this.estudianteService.crear(estudiante2);
 		this.estudianteService.crear(estudiante3);
-		this.estudianteService.crear(estudiante4);
-
-		System.out.println("Estudiante por Nombre" + this.estudianteService.buscarNombre("Serghy"));
+		this.estudianteService.crear(estudiante4);*/
+		System.out.println("\nNORMAL");
+		System.out.println("Estudiante por Nombre " + this.estudianteService.buscarNombre("Serghy"));
+		System.out.println("\nQUERY NAMED Y TYPED");
+		System.out.println("Estudiante por Nombre Typed " + this.estudianteService.buscarNombreTyped("Dayana"));
+		System.out.println("Estudiante por Apellido Named " + this.estudianteService.buscarApellidoNamed("Castillo"));
+		System.out.println("Estudiante por Genero Typed-Named " + this.estudianteService.buscarGeneroTypedNamed("F"));
+		System.out.println("\nNATIVE");
+		System.out.println("Estudiante por Ciudad Native " + this.estudianteService.buscarCiudadNative("Quevedo"));
+		//System.out.println("Estudiante por Cedula Native Named Typed" + this.estudianteService.buscarCedulaTypedNamedNative("1717569838"));
+		
+		/*
 		System.out.println("Estudiante por Apellido" + this.estudianteService.buscarApellido("Castillo"));
 		System.out.println("Estudiante por Ciudad" + this.estudianteService.buscarCiudad("Quevedo"));
 		System.out.println("Estudiante por Cedula" + this.estudianteService.buscarCedula("1717569838"));
-		System.out.println("Estudiante por Genero" + this.estudianteService.buscarGenero("F"));
+		System.out.println("Estudiante por Genero" + this.estudianteService.buscarGenero("F"));*/
 
 	}
 

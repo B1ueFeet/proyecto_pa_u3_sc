@@ -1,8 +1,11 @@
 package com.example.demo.repo;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.dto.EstudianteDTO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -18,14 +21,14 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 	private EntityManager manager;
 
 	@Override
-	public Estudiante buscarNombreQuery(String nombre) {
+	public List<Estudiante> buscarNombreQueryList(String nombre) {
 		// TODO Auto-generated method stub
 		// select * from estudiante where estu_nombre = 'Edison'
 		// select e from Estudainte e where e.nombre = :datoNombre
 		Query jpqlQuery = this.manager.createQuery("select e from Estudiante e where e.nombre = :datoNombre");
 		jpqlQuery.setParameter("datoNombre", nombre);
 		// retorna Genericos y hay que hacer un CAST
-		return (Estudiante) jpqlQuery.getSingleResult();
+		return jpqlQuery.getResultList();
 	}
 
 	@Override
@@ -88,27 +91,48 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 	}
 
 	@Override
-	public Estudiante buscarGeneroNamedQuerytyped(String genero) {
+	public List<Estudiante> buscarGeneroNamedQuerytypedList(String genero) {
 		// TODO Auto-generated method stub
 		TypedQuery<Estudiante> query = this.manager.createNamedQuery("Estudiante.buscarPorGenero", Estudiante.class);
 		query.setParameter("datoGenero", genero);
-		return query.getSingleResult();
+		return query.getResultList();
 	}
 
 	@Override
 	public Estudiante buscarCiudadNativeQuery(String ciudad) {
 		// TODO Auto-generated method stub
-		Query query = this.manager.createNativeQuery("select * from estudiante where estu_ciudad = :datoCiudad",Estudiante.class);
+		Query query = this.manager.createNativeQuery("select * from estudiante where estu_ciudad = :datoCiudad",
+				Estudiante.class);
 		query.setParameter("datoCiudad", ciudad);
 		return (Estudiante) query.getSingleResult();
 	}
 
 	@Override
-	public Estudiante buscarCedulaNativeQueryTypedNamed(String cedula) {
+	public List<Estudiante> buscarCedulaNativeQueryTypedNamedList(String cedula) {
 		// TODO Auto-generated method stub
 		TypedQuery<Estudiante> query = this.manager.createNamedQuery("Estudiante.buscarPorCedula", Estudiante.class);
 		query.setParameter("datoCedula", cedula);
-		return query.getSingleResult();
+		return query.getResultList();
+	}
+
+	@Override
+	public Estudiante buscarNombreQueryFirst(String nombre) {
+		// TODO Auto-generated method stub
+
+		Query jpqlQuery = this.manager.createQuery("select e from Estudiante e where e.nombre = :datoNombre");
+		jpqlQuery.setParameter("datoNombre", nombre);
+		// retorna Genericos y hay que hacer un CAST
+
+		return (Estudiante) jpqlQuery.getResultList().get(0);
+	}
+
+	@Override
+	public EstudianteDTO buscarNombreTypedQueryDTO(String nombre) {
+		// TODO Auto-generated method stub
+		TypedQuery<EstudianteDTO> typedQuery = this.manager
+				.createQuery("select NEW EstudianteDTO( e.nombre, e.apellido, e.cedula) = :datoNombre", EstudianteDTO.class);
+		typedQuery.setParameter("datoNombre", nombre);
+		return typedQuery.getSingleResult();
 	}
 
 }

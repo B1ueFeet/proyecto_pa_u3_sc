@@ -46,4 +46,17 @@ EXISTEN 3 FORMAS DE EJECUTAR QUERYS COMPLEJOS EN JAKARTA
 																		└►Metodos 
 							Beneficios:			-► Manera Dinamica 
 												
-NOTA: Hibernate INDEPENDIZA el codigo de la base de datos 
+NOTA: 	Hibernate INDEPENDIZA el codigo de la base de datos 
+
+NOTA: 	no todas las consultas devuelven una sola entidad
+
+NOTA: 	El IVA se debe obtener un unico registro (.getSingleResult())
+	
+NOTA: 	El reporte general + pesado - eficiente
+
+DTO:	Objeto con campos especificos 	(Estudiante sencillo)
+		Data Transfer Object			(Objeto Sencillo)
+		objetos con los campos sencillos reducidos
+		
+NOTA: 	La buena practica es declarar explicitamente el constructor por defecto cuando
+		se declara un constructor especifico

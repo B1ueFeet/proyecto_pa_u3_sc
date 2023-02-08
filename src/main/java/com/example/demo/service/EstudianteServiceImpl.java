@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.dto.EstudianteDTO;
 import com.example.demo.repo.IEstudianteRepo;
 
 @Service
@@ -12,9 +15,9 @@ public class EstudianteServiceImpl implements IEstudianteService{
 	private IEstudianteRepo estudianteRepo;
 
 	@Override
-	public Estudiante buscarNombre(String nombre) {
+	public List<Estudiante> buscarNombre(String nombre) {
 		// TODO Auto-generated method stub
-		return this.estudianteRepo.buscarNombreQuery(nombre);
+		return this.estudianteRepo.buscarNombreQueryList(nombre);
 	}
 
 	@Override
@@ -61,21 +64,33 @@ public class EstudianteServiceImpl implements IEstudianteService{
 	}
 
 	@Override
-	public Estudiante buscarGeneroTypedNamed(String genero) {
+	public List<Estudiante> buscarGeneroTypedNamed(String genero) {
 		// TODO Auto-generated method stub
-		return this.estudianteRepo.buscarGeneroNamedQuerytyped(genero);
+		return this.estudianteRepo.buscarGeneroNamedQuerytypedList(genero);
 	}
 
 	@Override
-	public Estudiante buscarCedulaTypedNamedNative(String cedula) {
+	public List<Estudiante> buscarCedulaTypedNamedNative(String cedula) {
 		// TODO Auto-generated method stub
-		return this.estudianteRepo.buscarCedulaNativeQueryTypedNamed(cedula);
+		return this.estudianteRepo.buscarCedulaNativeQueryTypedNamedList(cedula);
 	}
 
 	@Override
 	public Estudiante buscarCiudadNative(String ciudad) {
 		// TODO Auto-generated method stub
 		return this.estudianteRepo.buscarCiudadNativeQuery(ciudad);
+	}
+
+	@Override
+	public Estudiante buscarNombreFirst(String nombre) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarNombreQueryFirst(nombre);
+	}
+
+	@Override
+	public EstudianteDTO buscarNombreTypedDTO(String nombre) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarNombreTypedQueryDTO(nombre);
 	}
 	
 	

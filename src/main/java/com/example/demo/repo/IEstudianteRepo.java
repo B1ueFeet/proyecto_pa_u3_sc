@@ -6,23 +6,52 @@ import com.example.demo.modelo.Estudiante;
 import com.example.demo.modelo.dto.EstudianteDTO;
 
 public interface IEstudianteRepo {
-	
-	//insertar
+	// Devuelven un solo estudinate
+
 	public void insertar(Estudiante estudiante);
 
-	//BUSQUEDAS
-	public Estudiante buscarNombreTypedQuery(String nombre);
-	public Estudiante buscarApellidoNamedQuery(String apellido);
-	public Estudiante buscarApellidoQuery(String apellido);
-	public Estudiante buscarGeneroQuery(String genero);
-	public Estudiante buscarCiudadQuery(String ciudad);
-	public Estudiante buscarCiudadNativeQuery(String ciudad);
-	public Estudiante buscarCedulaQuery(String cedula);
-	//para varios
-	public List<Estudiante> buscarNombreQueryList(String nombre);
-	public Estudiante buscarNombreQueryFirst(String nombre);
-	public List<Estudiante> buscarGeneroNamedQuerytypedList(String genero);
-	public List<Estudiante> buscarCedulaNativeQueryTypedNamedList(String cedula);
-	//DTO
-	public EstudianteDTO buscarNombreTypedQueryDTO(String nombre);
+	public Estudiante buscarPorNombre(String nombre);
+
+	public Estudiante buscarPorNombreTypeQuery(String nombre);
+
+	public Estudiante buscarPorApellidoNamedQueryTyped(String apellido);
+
+	public Estudiante buscarPorApellidoNamedQuery(String apellido);
+
+	public Estudiante buscarPorNombreNativeQuery(String nombre);
+
+	public Estudiante buscarPorNombreNativeQueryTypedNamed(String nombre);
+
+	public Estudiante buscarPorApellido(String apellido);
+
+	public Estudiante buscarPorGenero(String genero);
+
+	public Estudiante buscarPorCedula(String cedula);
+
+	public Estudiante buscarPorCiudad(String ciudad);
+
+	// Obtener el primero
+
+	public Estudiante buscarPorNombreFirst(String genero);
+
+	// Devuelven una lista de estudiantes
+
+	public List<Estudiante> buscarPorNombreQueryList(String genero);
+
+	public List<Estudiante> buscarPorApellidoNamedQueryTypedList(String apellido);
+
+	public List<Estudiante> buscarPorNombreNativeQueryTypedNamedList(String nombre);
+
+	// DTO
+	public EstudianteDTO buscarPorNombreTypeQueryDTO(String nombre);
+
+	// Criteria Api Query
+	public Estudiante buscarPorNombreCriteria(String nombre);
+
+	public List<Estudiante> buscarPorNombreCriteriaAndOr(String nombre, String apellido, String bandera);
+
+	// Metodos de ejemplo:
+	public int eliminarPorApellido(String apellido);
+
+	public int atualizarporApellido(String apellido, String nombre);
 }

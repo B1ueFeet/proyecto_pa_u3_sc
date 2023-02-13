@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.Hotel;
 import com.example.demo.service.IEstudianteService;
 
 @SpringBootApplication
@@ -20,56 +22,48 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		Hotel hotel1 = new Hotel();
+		hotel1.setDireccion("Miraflores");
+		hotel1.setNombre("Patito");
+		Estudiante estudiante1 = new Estudiante();
+		estudiante1.setApellido("Diaz");
+		estudiante1.setNombre("Willan");
+		estudiante1.setCedula("1725841538");
+		estudiante1.setCiudad("Quito");
+		estudiante1.setGenero("M");
 
-		// Insertar estudiantes
-		/*
-		 * Estudiante estudiante = new Estudiante(); estudiante.setApellido("Castillo");
-		 * estudiante.setCedula("1717844466"); estudiante.setCiudad("Quito");
-		 * estudiante.setGenero("M"); estudiante.setNombre("Serghy");
-		 * 
-		 * Estudiante estudiante2 = new Estudiante(); estudiante2.setApellido("Conde");
-		 * estudiante2.setCedula("1717560930"); estudiante2.setCiudad("Quevedo");
-		 * estudiante2.setGenero("F"); estudiante2.setNombre("Serghy");
-		 * 
-		 * Estudiante estudiante3 = new Estudiante(); estudiante3.setApellido("Madrid");
-		 * estudiante3.setCedula("1717560930"); estudiante3.setCiudad("Guayaquil");
-		 * estudiante3.setGenero("M"); estudiante3.setNombre("Serghy");
-		 * 
-		 * Estudiante estudiante4 = new Estudiante();
-		 * estudiante4.setApellido("Chuquimarca"); estudiante4.setCedula("1717560930");
-		 * estudiante4.setCiudad("Otavalo"); estudiante4.setGenero("M");
-		 * estudiante4.setNombre("Miguel");
-		 * 
-		 * this.estudianteService.crear(estudiante);
-		 * this.estudianteService.crear(estudiante2);
-		 * this.estudianteService.crear(estudiante3);
-		 * this.estudianteService.crear(estudiante4);
-		 */
-		System.out.println("MANEJO DE LISTAS");
-		System.out.println("POR NOMBRE 'Serghy'");
-		this.estudianteService.buscarNombre("Serghy").forEach(System.out::println);
-		System.out.println("POR GENERO 'M'");
-		this.estudianteService.buscarGeneroTypedNamed("M").forEach(System.out::println);
-		System.out.println("POR CEDULA '1717560930'");
-		this.estudianteService.buscarCedulaTypedNamedNative("1717560930").forEach(System.out::println);
-		System.out.println("FIRST RESULT");
-		System.out.println(this.estudianteService.buscarNombreFirst("Serghy"));
-		System.out.println("MANEJO DE QUERIES");
-		System.out.println(this.estudianteService.buscarNombreTyped("Miguel"));
-		System.out.println(this.estudianteService.buscarCedulaTypedNamedNative("1717844466"));
+		Estudiante estudiante2 = new Estudiante();
+		estudiante2.setApellido("Cordova");
+		estudiante2.setNombre("Alexander");
+		estudiante2.setCedula("1725841539");
+		estudiante2.setCiudad("Ambato");
+		estudiante2.setGenero("M");
 
-		
-	
+		Estudiante estudiante3 = new Estudiante();
+		estudiante3.setApellido("Torres");
+		estudiante3.setNombre("Marco");
+		estudiante3.setCedula("1725841530");
+		estudiante3.setCiudad("Guayaquil");
+		estudiante3.setGenero("M");
+
+		Estudiante estudiante4 = new Estudiante();
+		estudiante4.setApellido("Guaman");
+		estudiante4.setNombre("Ericka");
+		estudiante4.setCedula("1725841531");
+		estudiante4.setCiudad("Tulcan");
+		estudiante4.setGenero("F");
+
 		/*
-		 * System.out.println("Estudiante por Apellido" +
-		 * this.estudianteService.buscarApellido("Castillo"));
-		 * System.out.println("Estudiante por Ciudad" +
-		 * this.estudianteService.buscarCiudad("Quevedo"));
-		 * System.out.println("Estudiante por Cedula" +
-		 * this.estudianteService.buscarCedula("1717569838"));
-		 * System.out.println("Estudiante por Genero" +
-		 * this.estudianteService.buscarGenero("F"));
+		 * this.estudianteService.insertar(estudiante1);
+		 * this.estudianteService.insertar(estudiante2);
+		 * this.estudianteService.insertar(estudiante3);
+		 * this.estudianteService.insertar(estudiante4);
 		 */
+
+		System.out.println("Actualizar nombre por apellido: ");
+		System.out.println(this.estudianteService.atualizarporApellido("Diaz", "Alexander"));
+		System.out.println("Eliminar por apellido: ");
+		System.out.println(this.estudianteService.eliminarPorApellido("Cordova"));
 
 	}
 

@@ -6,21 +6,54 @@ import com.example.demo.modelo.Estudiante;
 import com.example.demo.modelo.dto.EstudianteDTO;
 
 public interface IEstudianteService {
-	
-	public List<Estudiante> buscarNombre(String nombre);
-	
-	public Estudiante buscarNombreFirst(String nombre);
-	public Estudiante buscarNombreTyped(String nombre);
-	public EstudianteDTO buscarNombreTypedDTO(String nombre);
-	public Estudiante buscarApellido(String apellido);
-	public Estudiante buscarApellidoNamed(String apellido);
-	public Estudiante buscarGenero(String genero);
-	public List<Estudiante> buscarGeneroTypedNamed(String genero);
-	public Estudiante buscarCedula(String cedula);
-	public List<Estudiante> buscarCedulaTypedNamedNative(String cedula);
-	public Estudiante buscarCiudad(String ciudad);
-	public Estudiante buscarCiudadNative(String ciudad);
-	public void crear (Estudiante estudiante);
 
+	// Consulta un solo estudiante
+
+	public void insertar(Estudiante estudiante);
+
+	public Estudiante buscarPorNombre(String nombre);
+
+	public Estudiante buscarPorNombreTypeQuery(String nombre);
+
+	public Estudiante buscarPorApellidoNamedQuery(String apellido);
+
+	public Estudiante buscarPorApellidoNamedQueryTyped(String apellido);
+
+	public Estudiante buscarPorNombreNativeQuery(String nombre);
+
+	public Estudiante buscarPorNombreNativeQueryTypedNamed(String nombre);
+
+	public Estudiante buscarPorApellido(String apellido);
+
+	public Estudiante buscarPorGenero(String genero);
+
+	public Estudiante buscarPorCedula(String cedula);
+
+	public Estudiante buscarPorCiudad(String ciudad);
+
+	// Obtener el primero
+
+	public Estudiante buscarPorNombreFirst(String genero);
+
+	// Devuelven una lista de estudiantes
+
+	public List<Estudiante> buscarPorNombreQueryList(String Genero);
+
+	public List<Estudiante> buscarPorApellidoNamedQueryTypedList(String apellido);
+
+	public List<Estudiante> buscarPorNombreNativeQueryTypedNamedList(String nombre);
+
+	// DTO
+	public EstudianteDTO buscarPorNombreTypeQueryDTO(String nombre);
+
+	// Criteria
+	public Estudiante buscarPorNombreCriteria(String nombre);
+
+	public List<Estudiante> buscarPorNombreCriteriaAndOr(String nombre, String apellido, String bandera);
+
+	// Metodos de ejemplo:
+	public int eliminarPorApellido(String apellido);
+
+	public int atualizarporApellido(String apellido, String nombre);
 
 }

@@ -13,17 +13,22 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
+
 @NamedQueries({
-		@NamedQuery(name = "Estudiante.buscarPorApellido", query = "select e from Estudiante e where e.apellido = :datoApellido"),
-		@NamedQuery(name = "Estudiante.buscarPorGenero", query = "select e from Estudiante e where e.genero = :datoGenero") })
+		@NamedQuery(name = "Estudiante.buscarPorApe", query = "select e from Estudiante e where e.apellido = :datoApellido"),
+		@NamedQuery(name = "Estudiante.buscarPorApe1", query = "select e from Estudiante e where e.apellido = :datoApellido"),
+		@NamedQuery(name = "Estudiante.buscarPorApe2", query = "select e from Estudiante e where e.apellido = :datoApellido") })
+
 @NamedNativeQueries({
-		@NamedNativeQuery(name = "Estudiante.buscarPorCedula", query = "select * from estudiante where estu_cedula = :datoCedula", resultClass = Estudiante.class) })
+		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative", query = "select * from estudiante where estu_nombre = :datoNombre", resultClass = Estudiante.class),
+		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative1", query = "select * from estudiante where estu_nombre = :datoNombre", resultClass = Estudiante.class),
+		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative2", query = "select * from estudiante where estu_nombre = :datoNombre", resultClass = Estudiante.class) })
 @Table(name = "estudiante")
 public class Estudiante {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estu_seq")
-	@SequenceGenerator(name = "estu_seq", sequenceName = "estu_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cualquiera")
+	@SequenceGenerator(name = "cualquiera", sequenceName = "estu_seq", allocationSize = 1)
 	@Column(name = "estu_id")
 	private Integer id;
 
@@ -42,7 +47,7 @@ public class Estudiante {
 	@Column(name = "estu_ciudad")
 	private String ciudad;
 
-	// GETTER & SETTER
+	// Getters y setters
 	public Integer getId() {
 		return id;
 	}

@@ -20,4 +20,34 @@ public class HotelServiceImpl implements IHotelService {
 		return this.hotelRepo.buscarHotelInnerJoin(tipoHabitacion);
 	}
 
+	@Override
+	public List<Hotel> buscarHotelOuterRightJoin(String tipoHabitacion) {
+		// TODO Auto-generated method stub
+		return this.hotelRepo.buscarHotelOuterRightJoin(tipoHabitacion);
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOuterLeftJoin(String tipoHabitacion) {
+		// TODO Auto-generated method stub
+		return this.hotelRepo.buscarHotelOuterLeftJoin(tipoHabitacion);
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOuterFullJoin(String tipoHabitacion) {
+		// TODO Auto-generated method stub
+		return this.hotelRepo.buscarHotelOuterFullJoin(tipoHabitacion);
+	}
+
+	@Override
+	public List<Hotel> buscarHotelWhereJoin(String tipoHabitacion) {
+		// TODO Auto-generated method stub
+		return this.buscarHotelWhereJoin(tipoHabitacion);
+	}
+
+	@Override
+	public List<Hotel> buscarHotelFetchJoin(String tipoHabitacion) {
+		// TODO Auto-generated method stub
+		return this.hotelRepo.buscarHotelFetchJoin(tipoHabitacion);
+	}
+
 }

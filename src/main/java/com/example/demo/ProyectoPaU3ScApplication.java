@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.demo.modelo.Estudiante;
 import com.example.demo.modelo.Hotel;
 import com.example.demo.service.IEstudianteService;
+import com.example.demo.service.IHotelService;
 
 @SpringBootApplication
 public class ProyectoPaU3ScApplication implements CommandLineRunner {
@@ -17,54 +18,36 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 	}
 
 	@Autowired
-	private IEstudianteService estudianteService;
+	private IHotelService hotelService;
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		Hotel hotel1 = new Hotel();
-		hotel1.setDireccion("Miraflores");
-		hotel1.setNombre("Patito");
-		Estudiante estudiante1 = new Estudiante();
-		estudiante1.setApellido("Diaz");
-		estudiante1.setNombre("Willan");
-		estudiante1.setCedula("1725841538");
-		estudiante1.setCiudad("Quito");
-		estudiante1.setGenero("M");
+		
+		System.out.println("\nBuscar Inner Join");
+		this.hotelService.buscarHotelInnerJoin("VIP").forEach(a -> { 
+			System.out.print(a.getNombre()+ "\n");
+			a.getHabitaciones().forEach(System.out::println);
+			});
 
-		Estudiante estudiante2 = new Estudiante();
-		estudiante2.setApellido("Cordova");
-		estudiante2.setNombre("Alexander");
-		estudiante2.setCedula("1725841539");
-		estudiante2.setCiudad("Ambato");
-		estudiante2.setGenero("M");
-
-		Estudiante estudiante3 = new Estudiante();
-		estudiante3.setApellido("Torres");
-		estudiante3.setNombre("Marco");
-		estudiante3.setCedula("1725841530");
-		estudiante3.setCiudad("Guayaquil");
-		estudiante3.setGenero("M");
-
-		Estudiante estudiante4 = new Estudiante();
-		estudiante4.setApellido("Guaman");
-		estudiante4.setNombre("Ericka");
-		estudiante4.setCedula("1725841531");
-		estudiante4.setCiudad("Tulcan");
-		estudiante4.setGenero("F");
-
+		System.out.println("\nBuscar Outer Left Join");
+		this.hotelService.buscarHotelOuterLeftJoin("VIP").forEach(a -> { 
+			System.out.print(a.getNombre()+ "\n");
+			a.getHabitaciones().forEach(System.out::println);
+			});
+		
+		//System.out.println("\nBuscar Outer Right Join");
+		//this.hotelService.buscarHotelOuterRightJoin("NOVIP").forEach(a -> { 
+		//	System.out.print(a.getNombre()+ "\n");
+		//	//a.getHabitaciones().forEach(System.out::println);
+		//	});
+		
 		/*
-		 * this.estudianteService.insertar(estudiante1);
-		 * this.estudianteService.insertar(estudiante2);
-		 * this.estudianteService.insertar(estudiante3);
-		 * this.estudianteService.insertar(estudiante4);
-		 */
-
-		System.out.println("Actualizar nombre por apellido: ");
-		System.out.println(this.estudianteService.atualizarporApellido("Diaz", "Alexander"));
-		System.out.println("Eliminar por apellido: ");
-		System.out.println(this.estudianteService.eliminarPorApellido("Cordova"));
-
+		System.out.println("\nBuscar Outer fULL Join");
+		this.hotelService.buscarHotelOuterFullJoin("").forEach(System.out::println);
+		System.out.println("\nBuscar Where Join");
+		this.hotelService.buscarHotelWhereJoin("").forEach(System.out::println);
+		System.out.println("\nBuscar Fetch Right Join");
+		this.hotelService.buscarHotelFetchJoin("").forEach(System.out::println);*/
 	}
 
 }

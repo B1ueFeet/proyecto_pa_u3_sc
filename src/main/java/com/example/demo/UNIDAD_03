@@ -60,3 +60,5 @@ DTO:	Objeto con campos especificos 	(Estudiante sencillo)
 		
 NOTA: 	La buena practica es declarar explicitamente el constructor por defecto cuando
 		se declara un constructor especifico
+		
+		ternarios

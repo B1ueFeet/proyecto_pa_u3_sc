@@ -70,6 +70,34 @@ public class HotelRepoImpl implements IHotelRepo{
 	@Override
 	public List<Hotel> buscarHotelFetchJoin(String tipoHabitacion) {
 		// TODO Auto-generated method stub
+		TypedQuery<Hotel> query = this.entityManager.
+				createQuery("SELECT h FROM Hotel h JOIN FETCH h.habitaciones ha WHERE ha.tipoHabitacion = :datoTipo", Hotel.class);
+		query.setParameter("datoTipo", tipoHabitacion);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOuterRightJoin() {
+		TypedQuery<Hotel> query = this.entityManager.
+				createQuery("SELECT h FROM Hotel h RIGHT JOIN h.habitaciones ha ", Hotel.class);
+		List<Hotel> list = query.getResultList();
+		//list.forEach(a -> a.getHabitaciones().size());
+		return list;
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOuterLeftJoin() {
+		// TODO Auto-generated method stub
+		TypedQuery<Hotel> query = this.entityManager.
+				createQuery("SELECT h FROM Hotel h LEFT JOIN h.habitaciones ha ", Hotel.class);
+		List<Hotel> list = query.getResultList();
+		list.forEach(a -> a.getHabitaciones().size());
+		return list;
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOuterFullJoin() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }
